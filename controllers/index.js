@@ -1,5 +1,5 @@
 const getNames = (req, res, next) => {
-  res.json(["Leonardo Correa"]);
+  res.json(["Leo Correa"]);
 };
 
 module.exports = { getNames };
