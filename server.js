@@ -1,14 +1,15 @@
-const express = require("express");
-const app = express();
+var express = require("express");
+var app = express();
+const mongodb = require("./db/connect");
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => res.type("html").send(html));
+app.use("/", require("./routes"));
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
-
-const html = `
-<!DOCTYPE html>
-<html>
-<p> Leonardo Correa </p>
-</html>
-`;
+mongodb.initDb((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    app.listen(port);
+    console.log(`Server is running on port ${port}`);
+  }
+});
