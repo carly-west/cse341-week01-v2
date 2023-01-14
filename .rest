@@ -1,6 +1,6 @@
-GET http://localhost:3000 HTTP/1.1
+GET http://localhost:3000/contacts HTTP/1.1
 
-# GET http://localhost:3000/mongoData HTTP/1.1
+# GET http://localhost:3000/getAllContactsContacts HTTP/1.1
 
 # GET https://cse341-week01-v2.onrender.com/URL
 
