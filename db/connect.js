@@ -1,3 +1,5 @@
+// This is the code we used from class
+
 const dotenv = require("dotenv");
 dotenv.config();
 const MongoClient = require("mongodb").MongoClient;
