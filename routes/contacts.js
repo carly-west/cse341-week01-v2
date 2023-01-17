@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const contactsController = require("../controllers");
+const contactsController = require('../controllers');
 
-router.get("/", contactsController.getAllContacts);
+router.get('/', contactsController.getAllContacts);
 
-router.get("/:id", contactsController.getSingleContacts);
+router.get('/:id', contactsController.getSingleContacts);
 
 module.exports = router;

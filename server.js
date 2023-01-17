@@ -1,11 +1,11 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongodb = require("./db/connect");
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongodb = require('./db/connect');
 
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use("/", require("./routes"));
+app.use('/', require('./routes'));
 
 mongodb.initDb((err) => {
   if (err) {
