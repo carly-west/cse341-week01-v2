@@ -64,7 +64,7 @@ const deleteContact = async (req, res, next) => {
 
   await mongodb.getDb().db('sample_data').collection('contacts').deleteOne({ _id: userId });
 
-  res.status(204).send('Status: 204 OK');
+  res.status(200).send('Status: 200 OK');
 };
 
 module.exports = {
