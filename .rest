@@ -6,10 +6,14 @@ GET http://localhost:3000/contacts HTTP/1.1
 GET http://localhost:3000/contacts/63bf50669745c6d5beafc493 HTTP/1.1
 
 ### Create new contact
-GET http://localhost:3000/contacts/new/contact HTTP/1.1
+POST http://localhost:3000/contacts/new/contact HTTP/1.1
 
 ### Edit contact
-GET http://localhost:3000/contacts/update/63c895785ac22c52d73c754a HTTP/1.1
+PUT http://localhost:3000/contacts/update/63c895785ac22c52d73c754a HTTP/1.1
+
+### Deleete contact
+DELETE http://localhost:3000/contacts/delete/63c89915301bda91ea8922c3 HTTP/1.1
+
 
 # PRODUCTION
 ### Get a single contact
@@ -17,3 +21,12 @@ GET https://cse341-week01-v2.onrender.com/contacts/63bf50669745c6d5beafc493
 
 ### Get all contacts
 GET http://cse341-week01-v2.onrender.com/contacts HTTP/1.1
+
+### Create new contact
+POST http://cse341-week01-v2.onrender.com/contacts/new/contact HTTP/1.1
+
+### Edit contact
+PUT http://cse341-week01-v2.onrender.com/contacts/update/63c89915301bda91ea8922c3 HTTP/1.1
+
+### Deleete contact
+DELETE http://cse341-week01-v2.onrender.com/contacts/delete/63c89915301bda91ea8922c3 HTTP/1.1

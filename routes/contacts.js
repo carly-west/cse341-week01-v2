@@ -11,4 +11,6 @@ router.post('/new/contact', contactsController.createNewContact);
 
 router.put('/update/:id', contactsController.updateContact);
 
+router.delete('/delete/:id', contactsController.deleteContact);
+
 module.exports = router;

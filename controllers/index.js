@@ -56,7 +56,21 @@ const updateContact = async (req, res, next) => {
       }
     );
 
-  res.status(200).send('Status: OK');
+  res.status(200).send('Status: 200 OK');
 };
 
-module.exports = { getAllContacts, getSingleContacts, createNewContact, updateContact };
+const deleteContact = async (req, res, next) => {
+  const userId = new client(req.params.id);
+
+  await mongodb.getDb().db('sample_data').collection('contacts').deleteOne({ _id: userId });
+
+  res.status(200).send('Status: 200 OK');
+};
+
+module.exports = {
+  getAllContacts,
+  getSingleContacts,
+  createNewContact,
+  updateContact,
+  deleteContact
+};
