@@ -37,7 +37,7 @@ const createNewContact = async (req, res, next) => {
     .find({ firstName: 'Carly' });
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
+    res.status(201).json(lists);
   });
 };
 
@@ -56,7 +56,7 @@ const updateContact = async (req, res, next) => {
       }
     );
 
-  res.status(200).send('Status: 200 OK');
+  res.status(204).send('Status: 204 OK');
 };
 
 const deleteContact = async (req, res, next) => {
@@ -64,7 +64,7 @@ const deleteContact = async (req, res, next) => {
 
   await mongodb.getDb().db('sample_data').collection('contacts').deleteOne({ _id: userId });
 
-  res.status(200).send('Status: 200 OK');
+  res.status(204).send('Status: 204 OK');
 };
 
 module.exports = {
