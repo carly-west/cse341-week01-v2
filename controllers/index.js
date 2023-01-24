@@ -57,7 +57,6 @@ const updateContact = async (req, res, next) => {
     );
 
   res.status(200).send('Status: 200 OK');
-  res.status(204).send('Status: 204 OK');
 };
 
 const deleteContact = async (req, res, next) => {
