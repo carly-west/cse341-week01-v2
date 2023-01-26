@@ -22,41 +22,44 @@ const getSingleContacts = async (req, res, next) => {
 };
 
 const createNewContact = async (req, res, next) => {
-  await mongodb.getDb().db('sample_data').collection('contacts').insertOne({
-    firstName: 'Carly',
-    LastName: 'West',
-    email: 'carly.west99@gmail.com',
-    favoriteColor: 'blue',
-    birthday: '09-20-1999'
-  });
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
 
-  const result = await mongodb
-    .getDb()
-    .db('sample_data')
-    .collection('contacts')
-    .find({ firstName: 'Carly' });
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(201).json(lists);
-  });
+  await mongodb.getDb().db('sample_data').collection('contacts').insertOne(contact);
+
+  if (response.acknowledged) {
+    res.status(201).json(response);
+  } else {
+    res.status(500).json(response.error || 'Some error occurred while creating the contact.');
+  }
 };
 
 const updateContact = async (req, res, next) => {
   const userId = new client(req.params.id);
-
-  await mongodb
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb
     .getDb()
     .db('sample_data')
     .collection('contacts')
-    .updateOne(
-      { _id: userId },
-      {
-        $set: { email: 'carly.correa8@gmail.com', LastName: 'Correa' },
-        $currentDate: { lastModified: true }
-      }
-    );
+    .updateOne({ _id: userId }, contact);
 
-  res.status(200).send('Status: 200 OK');
+  console.log(response);
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(response.error || 'Some error occurred while updating the contact.');
+  }
 };
 
 const deleteContact = async (req, res, next) => {
