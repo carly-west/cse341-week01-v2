@@ -21,26 +21,7 @@ const getSingleContacts = async (req, res, next) => {
   });
 };
 
-const createNewContact = async (req, res, next) => {
-  const contact = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday
-  };
-
-  await mongodb.getDb().db('sample_data').collection('contacts').insertOne(contact);
-
-  if (response.acknowledged) {
-    res.status(201).json(response);
-  } else {
-    res.status(500).json(response.error || 'Some error occurred while creating the contact.');
-  }
-};
-
-const updateContact = async (req, res, next) => {
-  const userId = new client(req.params.id);
+const createNewContact = async (req, res) => {
   const contact = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -52,8 +33,29 @@ const updateContact = async (req, res, next) => {
     .getDb()
     .db('sample_data')
     .collection('contacts')
-    .updateOne({ _id: userId }, contact);
+    .insertOne(contact);
+  if (response.acknowledged) {
+    res.status(201).json(response);
+  } else {
+    res.status(500).json(response.error || 'Some error occurred while creating the contact.');
+  }
+};
 
+const updateContact = async (req, res, next) => {
+  const userId = new client(req.params.id);
+  // be aware of updateOne if you only want to update specific fields
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb
+    .getDb()
+    .db('sample_data')
+    .collection('contacts')
+    .replaceOne({ _id: userId }, contact);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
