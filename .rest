@@ -55,7 +55,7 @@ content-type: application/json
 }
 
 ### Edit contact
-PUT http://cse341-week01-v2.onrender.com/contacts/63cc2b3836edb5425dc7a709 HTTP/1.1
+PUT http://cse341-week01-v2.onrender.com/contacts/63d323f4420bdc4effb09dac HTTP/1.1
 content-type: application/json
 
 {
@@ -67,4 +67,4 @@ content-type: application/json
 }
 
 ### Delete contact
-DELETE http://cse341-week01-v2.onrender.com/contacts/63cc2b3836edb5425dc7a709 HTTP/1.1
+DELETE http://cse341-week01-v2.onrender.com/contacts/63d323f4420bdc4effb09dac HTTP/1.1
